@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tela de início</title>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="top-bar">
+            <a href="dashboard_logado.html" class="logo-link"><h1 class="logo">Dev.Vagas</h1></a>
+        </div>
+        <div class="welcome-section">
+            <h2>Bem-vindo ao Dev.Vagas!</h2>
+            <p>Encontre a vaga ideal para você e se candidate agora mesmo.</p>
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="vaga-info">
+                    <!-- Aqui serão exibidas as informações da vaga -->
+                </div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <select id="cargo-filter">
+                <option value="all">Todos os Cargos</option>
+                <option value="estagio">Estágio</option>
+                <option value="efetivo">Efetivo</option>
+                <option value="aprendiz">Aprendiz</option>
+            </select>
+            <select id="area-filter">
+                <option value="all">Todas as Áreas</option>
+                <option value="Front-end">Front-end</option>
+                <option value="Back-end">Back-end</option>
+                <option value="Ciencia de dados">Ciência de Dados</option>
+            </select>
+            <select id="empresa-filter">
+                <option value="all">Todas as empresas</option>
+                <option value="empresa1">Empresa 1</option>
+                <option value="empresa2">Empresa 2</option>
+                <option value="empresa3">Empresa 3</option>
+            </select>
+            <button id="filtrar-btn">Filtrar</button>
+        </div>
+
+        <div class="vagas-container">
+            <div class="vaga">
+                <div class="vaga-date">
+                    <div class="day">27</div>
+                    <div class="month">JUN</div>
+                </div>
+                <div class="vaga-description">
+                    <div class="cargo">Estagio</div>
+                    <div class="area">Front-end</div>
+                    <div class="empresa">Empresa1</div>
+                </div>
+            </div>
+            <div class="vaga">
+                <div class="vaga-date">
+                    <div class="day">27</div>
+                    <div class="month">JUN</div>
+                    <div class="empresa">Empresa1</div>
+                </div>
+                <div class="vaga-description">
+                    <div class="cargo">Efetivo</div>
+                    <div class="area">Back-end</div>
+                    <div class="empresa">Empresa1</div>
+                </div>
+            </div>
+            <div class="vaga">
+                <div class="vaga-date">
+                    <div class="day">28</div>
+                    <div class="month">JUN</div>
+                </div>
+                <div class="vaga-description">
+                    <div class="cargo">Aprendiz</div>
+                    <div class="area">Ciencia de Dados</div>
+                    <div class="empresa">Empresa1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px 50px;
+    box-sizing: border-box;
+}
+
+.top-bar {
+    background-color: #31aac7;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 3em;
+    line-height: 1.75;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: 7px;
+}
+
+.logo-link {
+    text-decoration: none; /* Remove a sublinhado do link */
+    color: inherit; /* Herda a cor do elemento pai */
+}
+
+.logo-link:visited, .logo-link:focus, .logo-link:hover, .logo-link:active {
+    color: inherit; /* Garante que a cor não mude em nenhum estado */
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-section h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filters select, #filtrar-btn {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filters select:focus, #filtrar-btn:focus {
+    border: 1px solid #31aac7;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#filtrar-btn {
+    background-color: #31aac7;
+    color: white;
+    cursor: pointer;
+}
+
+#filtrar-btn:hover {
+    background-color: #1e3a5e;
+}
+
+.vagas-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.vaga {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 5px solid #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    flex-basis: calc(33.33% - 30px);
+    overflow: hidden;
+    height: 150px;
+    transition: transform 0.3s ease;
+}
+
+.vaga:hover {
+    transform: scale(1.05); 
+}
+
+.vaga-date {
+    background-color: #1e3a5e;
+    color: white;
+    flex-basis: 20%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.vaga-date .day {
+    font-size: 2em;
+}
+
+.vaga-date .month {
+    font-size: 1.2em;
+}
+
+.vaga-description {
+    flex-basis: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cargo {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.area, .empresa {
+    font-size: 1em;
+    color: #666;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 70%; /* Largura do modal */
+    max-width: 600px; /* Largura máxima do modal */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#vaga-info {
+    margin-bottom: 20px;
+}
+
+#cadastro-btn {
+    background-color: #31aac7;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#cadastro-btn:hover {
+    background-color: #1e3a5e;
+}
+
+/* Adicionei o estilo para a mensagem de erro em vermelho */
+.modal-content .error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.nome-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s, font-size 0.3s;
+}
+
+.nome-link:visited, .nome-link:focus, .nome-link:hover, .nome-link:active {
+    color: inherit; /* Garante que a cor não mude em nenhum estado */
+}
+
+.nome-link.clicked {
+    color: #31aac7;
+    font-size: 110%;
+}
+
+
+
+
+    </style>
+
+<script>
+    // Função para filtrar vagas com base nos filtros selecionados
+    function filtrarVagas() {
+        // Obtém os valores selecionados dos filtros
+        var cargoFiltro = document.getElementById('cargo-filter').value.toLowerCase();
+        var areaFiltro = document.getElementById('area-filter').value.toLowerCase();
+        var empresaFiltro = document.getElementById('empresa-filter').value.toLowerCase();
+
+        // Seleciona todas as vagas
+        var vagas = document.querySelectorAll('.vaga');
+
+        // Itera sobre cada vaga e aplica os filtros
+        vagas.forEach(function(vaga) {
+            var cargo = vaga.querySelector('.cargo').textContent.toLowerCase().trim();
+            var area = vaga.querySelector('.area').textContent.toLowerCase().trim();
+            var empresa = vaga.querySelector('.empresa').textContent.toLowerCase().trim();
+
+            // Verifica se a vaga atende aos critérios de filtro
+            var cargoMatch = (cargoFiltro === 'all' || cargo === cargoFiltro);
+            var areaMatch = (areaFiltro === 'all' || area === areaFiltro);
+            var empresaMatch = (empresaFiltro === 'all' || empresa === empresaFiltro);
+
+            // Exibe ou oculta a vaga com base nos filtros
+            if (cargoMatch && areaMatch && empresaMatch) {
+                vaga.style.display = 'flex'; // Exibe a vaga
+            } else {
+                vaga.style.display = 'none'; // Oculta a vaga
+            }
+        });
+    }
+
+    // Adiciona evento de clique no botão Filtrar
+    document.getElementById('filtrar-btn').addEventListener('click', filtrarVagas);
+
+    // Função para abrir o modal com detalhes da vaga
+    function openModal(vaga) {
+    var modal = document.getElementById("modal");
+    var vagaInfo = document.getElementById("vaga-info");
+
+    // Popula as informações da vaga no modal
+    var cargo = vaga.querySelector('.cargo').textContent.toLowerCase().trim();
+    var area = vaga.querySelector('.area').textContent.toLowerCase().trim();
+
+    var descricaoVaga = '';
+
+    // Define a descrição da vaga com base na área
+    switch (area) {
+        case 'front-end':
+            descricaoVaga = `
+                <h3>Descrição da Vaga de Front-end</h3>
+                <p>Desenvolver interfaces de usuário interativas utilizando HTML, CSS e JavaScript.</p>
+                <p>Colaborar com designers para transformar designs em código.</p>
+                
+            `;
+            break;
+        case 'back-end':
+            descricaoVaga = `
+                <h3>Descrição da Vaga de Back-end</h3>
+                <p>Implementar a lógica de negócios e o processamento de dados do lado do servidor.</p>
+                <p>Gerenciar integrações de sistemas e bancos de dados.</p>
+            `;
+            break;
+        case 'ciencia de dados':
+            descricaoVaga = `
+                <h3>Descrição da Vaga de Ciência de Dados</h3>
+                <p>Analisar dados para obter insights e suportar decisões de negócios.</p>
+                <p>Desenvolver algoritmos e modelos estatísticos para análise preditiva.</p>
+            `;
+            break;
+        default:
+            descricaoVaga = `
+                <h3>Descrição da Vaga</h3>
+                <p>Criar e realizar manutenções em códigos da empresa em linguagem C.</p>
+            `;
+            break;
+    }
+
+    // Inclui as informações da vaga no modal
+    vagaInfo.innerHTML = `
+        <h2>${vaga.querySelector('.cargo').textContent}</h2>
+        <p><strong>Área:</strong> ${vaga.querySelector('.area').textContent}</p>
+        <p><strong>Empresa:</strong> ${vaga.querySelector('.empresa').textContent}</p>
+
+        ${descricaoVaga}
+
+        <!-- CANDIDATOS -->
+        <h3>CANDIDATOS</h3>
+        <p><a class="nome-link" href="CURRICULO GABRIEL.pdf" target="_blank"><strong>GABRIEL AUGUSTO</strong></a></p>
+        <p><a class="nome-link" href="CV_CARLOS.pdf" target="_blank"><strong>CARLOS KOLODY</strong></a></p>
+        <p><a class="nome-link" href="CV_MADU.pdf" target="_blank"><strong>MARIA EDUARDA</strong></a></p>
+        <p><a class="nome-link" href="CV_BECA.pdf" target="_blank"><strong>CAMILA CUSTÓDIO</strong></a></p>
+        <p><a class="nome-link" href="CV_LUIS.pdf" target="_blank"><strong>LUIS GUSTAVO</strong></a></p>
+        <p><a class="nome-link" href="CV_MATHEUS.pdf" target="_blank"><strong>MATHEUS HENRIQUE</strong></a></p>
+
+        ${getExigencias(vaga)}
+
+        <!-- Mensagem em vermelho e botão de cadastro -->
+        <h3>.</h3>
+        <button id="cadastro-btn" onclick="window.location.href='perfilEMPRESA.html'">Finalizar vaga</button>
+    `;
+
+    // Exibe o modal
+    modal.style.display = "block";
+
+    // Adiciona evento de clique para os links dos nomes
+    document.querySelectorAll('.nome-link').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.target.classList.add('clicked');
+        });
+    });
+}
+
+    // Adiciona evento de clique para abrir o modal nas vagas
+    document.querySelectorAll('.vaga').forEach(function(vaga) {
+        vaga.addEventListener('click', function() {
+            openModal(vaga);
+        });
+    });
+
+    // Fecha o modal ao clicar no botão de fechar
+    document.querySelector('.close').addEventListener('click', function() {
+        document.getElementById("modal").style.display = "none";
+    });
+
+    // Fecha o modal ao clicar fora dele
+    window.addEventListener('click', function(event) {
+        var modal = document.getElementById("modal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // Função para obter as exigências de cada vaga
+    function getExigencias(vaga) {
+        var cargo = vaga.querySelector('.cargo').textContent.toLowerCase().trim();
+        var area = vaga.querySelector('.area').textContent.toLowerCase().trim();
+
+        switch (cargo) {
+            case 'estagio':
+                return (area === 'front-end') ? '' :
+                       (area === 'back-end') ? '' :
+                       (area === 'ciencia de dados') ? '' :
+                       '';
+            case 'efetivo':
+                return (area === 'front-end') ? '' :
+                       (area === 'back-end') ? '' :
+                       (area === 'ciencia de dados') ? '' :
+                       '';
+            case 'aprendiz':
+                return '';
+            default:
+                return '';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tela de início</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px 50px;
+            box-sizing: border-box;
+        }
+
+        .top-bar {
+            background-color: #31aac7;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 3em;
+            line-height: 1.75;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-decoration: underline;
+            text-decoration-color: black;
+            text-decoration-skip-ink: none;
+            text-decoration-thickness: 7px;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-link:visited, .logo-link:focus, .logo-link:hover, .logo-link:active {
+            color: inherit;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-section h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .welcome-section p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .vagas-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .vaga {
+            background-color: #fff;
+            border-radius: 10px;
+            border: 5px solid #000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-basis: 30%;
+            padding: 20px;
+            height: 150px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .vaga:hover {
+            transform: scale(1.05);
+        }
+
+        .vaga h3, .vaga p {
+            margin: 0;
+        }
+
+        .vaga h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .vaga p {
+            font-size: 1em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="top-bar">
+            <a href="dashboard_logado.html" class="logo-link"><h1 class="logo">Dev.Vagas</h1></a>
+        </div>
+        <div class="welcome-section">
+            <h2>Compromissos com vagas</h2>
+        </div>
+        <div class="vagas-container">
+            <div class="vaga">
+                <h3>Estágio back-end</h3>
+                <p>Entrevista com Camila Custódio</p>
+                <p>Segunda-feira 01/07/2024</p>
+                <p>Enviar convite ao candidato via e-mail</p>
+            </div>
+            <div class="vaga">
+                <h3>Estágio front-end</h3>
+                <p>Analisar Currículos de candidatos</p>
+                <p>Segunda-feira 01/07/2024</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

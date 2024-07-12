@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tela de início</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Altura mínima para preencher a tela */
+        }
+    
+        .top-bar {
+            background-color: #31aac7;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+        }
+    
+        .logo {
+            font-size: 3em;
+            line-height: 1.75;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-decoration: underline;
+            text-decoration-color: black;
+            text-decoration-skip-ink: none;
+            text-decoration-thickness: 7px;
+        }
+
+        .content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .tab a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .tab a:hover {
+            color: #31aac7;
+        }
+
+        .spacer {
+            margin-bottom: 40px; /* Adiciona espaço extra entre as abas e o restante do conteúdo */
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-info {
+            margin-left: 20px;
+            font-size: 1.2em;
+        }
+
+        .profile-info div {
+            margin-bottom: 10px;
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+        }
+
+        .profile-image img {
+            width: 375px; /* 2.5 vezes maior que 150px */
+            height: 375px;
+            border-radius: 50%;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px; /* Tamanho maior dos botões */
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-size: 1.2em;
+        }
+
+        .buttons button:hover {
+            transform: scale(1.1);
+        }
+
+        .secondary-buttons button {
+            background-color: #1e3a5e;
+        }
+
+        .sidebar {
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="top-bar">
+            <h1 class="logo">Dev.Vagas</h1>
+        </div>
+        <div class="content">
+            <div>
+                <div class="tabs">
+                    <div class="tab"><a href="dashboard_logado2.html">Início</a></div>
+                    <div class="tab"><a href="inscricoes2.html">Inscrições</a></div>
+                    <div class="tab"><a href="vagasconcluidas.html">Vagas Concluídas</a></div>
+                    <div class="tab"><a href="formularios_pendentes2.html">Formulários pendentes</a></div>
+                    <div class="tab"><a href="agenda.html">Agenda</a></div>
+                </div>
+                <div class="spacer"></div> <!-- Espaço extra entre as abas e o restante do conteúdo -->
+                <div class="profile-container">
+                    <div class="profile-image">
+                        <img src="perfil.png" alt="Foto de Perfil">
+                    </div>
+                    <div class="profile-info">
+                        <div>CPF: 083.310.399-71</div>
+                        <div>Data de Nascimento: 27/06/2005</div>
+                        <div>Nome Completo: Gabriel Augusto do Vale</div>
+                        <div>Endereço: Rua Aníbal Requião, 715, Xaxim, Curitiba, Paraná</div>
+                        <div>Número de Telefone: (41) 99730-9216</div>
+                        <div>gmail: gabriel@gmail.com</div>
+                        <div>LinkedIn: Gabriel Vale</div>
+                        <div class="buttons">
+                            <button onclick="window.location.href='Alterar.html'">EDITAR INFORMAÇÕES</button>
+                        <div class="buttons secondary-buttons">
+                            <button onclick="window.location.href='CURRICULO GABRIEL.pdf'">Baixar Currículo</button>
+                            <button onclick="window.location.href='editar.html'">Editar Currículo</button>
+                            <button onclick="window.location.href='vagas.html'">Vagas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para redirecionar ao PDF
+        function showModal() {
+            window.location.href = 'CURRICULO GABRIEL.pdf';
+        }
+    </script>
+</body>
+</html>

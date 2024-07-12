@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px 50px;
+            box-sizing: border-box;
+        }
+
+        .top-bar {
+            background-color: #31aac7;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 3em;
+            line-height: 1.75;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-decoration: underline;
+            text-decoration-color: black;
+            text-decoration-skip-ink: none;
+            text-decoration-thickness: 7px;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-link:visited, .logo-link:focus, .logo-link:hover, .logo-link:active {
+            color: inherit;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-section h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .welcome-section p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .question p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .options {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .option {
+            margin-bottom: 5px;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .programming-field {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .programming-field h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .code-example {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: auto; /* Adicionar barra de rolagem */
+        }
+
+        .code-example pre {
+            margin: 0;
+        }
+
+        .instruction {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .ide-container {
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .line-numbers {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 5px;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 1.5em;
+            overflow-y: scroll;
+            flex-shrink: 0; /* Não permitir que a numeração de linhas diminua */
+            width: 2.5em; /* Largura ajustada para os números de linha */
+        }
+
+        .line-numbers pre {
+            margin: 0;
+        }
+
+        .ide-container textarea {
+            width: 100%;
+            min-height: 300px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            resize: none;
+            line-height: 1.5em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #31aac7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #1a768f;
+        }
+
+        button:focus {
+            outline: none;
+        }
+    </style>
+    <title>Teste de Conhecimento Front-end</title>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="top-bar">
+            <a href="dashboard_logado.html" class="logo-link"><h1 class="logo">Dev.Vagas</h1></a>
+        </div>
+        
+        <div class="welcome-section">
+            <h2>Teste de Conhecimento Front-end</h2>
+            <p>Responda as seguintes perguntas e programe conforme instruções:</p>
+        </div>
+        
+        <div class="programming-field">
+            <h3>Programação</h3>
+            <div class="instruction">Crie uma div com o texto "Olá mundo" em vermelho.</div>
+            <div class="code-example">
+                <pre>&lt;body&gt;
+  &lt;style&gt;
+    /* Seu estilo aqui */
+  &lt;/style&gt;
+  /*Sua página aqui */
+&lt;/body&gt;</pre>
+            </div>
+            <div class="ide-container">
+                <div class="line-numbers">
+                    <pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+                    </pre>
+                </div>
+                <textarea id="codeEditor" placeholder="Digite seu código aqui..."></textarea>
+            </div>
+        </div>
+
+        <!-- Pergunta de HTML -->
+        <div class="question">
+            <h3>Pergunta de HTML</h3>
+            <p>Qual tag HTML é usada para definir uma lista não ordenada?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="htmlQuestion" value="a"> A) &lt;ul&gt;</div>
+                <div class="option"><input type="radio" name="htmlQuestion" value="b"> B) &lt;ol&gt;</div>
+                <div class="option"><input type="radio" name="htmlQuestion" value="c"> C) &lt;li&gt;</div>
+                <div class="option"><input type="radio" name="htmlQuestion" value="d"> D) &lt;div&gt;</div>
+            </div>
+        </div>
+
+        <!-- Pergunta de CSS -->
+        <div class="question">
+            <h3>Pergunta de CSS</h3>
+            <p>Qual propriedade CSS é usada para definir a cor de fundo de um elemento?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="cssQuestion" value="a"> A) color</div>
+                <div class="option"><input type="radio" name="cssQuestion" value="b"> B) background-color</div>
+                <div class="option"><input type="radio" name="cssQuestion" value="c"> C) border-color</div>
+                <div class="option"><input type="radio" name="cssQuestion" value="d"> D) text-color</div>
+            </div>
+        </div>
+
+        <!-- Pergunta de JavaScript -->
+        <div class="question">
+            <h3>Pergunta de JavaScript</h3>
+            <p>Qual comando JavaScript é usado para exibir uma caixa de alerta com uma mensagem?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="jsQuestion" value="a"> A) alertBox()</div>
+                <div class="option"><input type="radio" name="jsQuestion" value="b"> B) msgBox()</div>
+                <div class="option"><input type="radio" name="jsQuestion" value="c"> C) alert()</div>
+                <div class="option"><input type="radio" name="jsQuestion" value="d"> D) prompt()</div>
+            </div>
+        </div>
+
+        <!-- Botão Enviar Questionário -->
+        <button id="btnSubmit" onclick="submitQuiz()">Enviar questionário</button>
+        
+    </div>
+
+    <!-- Script para processar respostas -->
+    <script>
+        function submitQuiz() {
+
+            window.location.href = "perfil.html"
+            // Verificar respostas de HTML
+            var htmlAnswer = document.querySelector('input[name="htmlQuestion"]:checked');
+            if (htmlAnswer && htmlAnswer.value === "a") {
+                console.log("Resposta correta para HTML");
+            } else {
+                console.log("Resposta incorreta para HTML");
+            }
+
+            // Verificar respostas de CSS
+            var cssAnswer = document.querySelector('input[name="cssQuestion"]:checked');
+            if (cssAnswer && cssAnswer.value === "b") {
+                console.log("Resposta correta para CSS");
+            } else {
+                console.log("Resposta incorreta para CSS");
+            }
+
+            // Verificar respostas de JavaScript
+            var jsAnswer = document.querySelector('input[name="jsQuestion"]:checked');
+            if (jsAnswer && jsAnswer.value === "c") {
+                console.log("Resposta correta para JavaScript");
+            } else {
+                console.log("Resposta incorreta para JavaScript");
+            }
+
+            // Aqui você pode implementar mais lógica conforme necessário
+
+            // Exemplo: Exibir alerta ou redirecionar após verificar todas as respostas
+            alert("Questionário enviado! Em breve iremos retornar seu resultado e a continuidade do processo seletivo");
+        }
+    </script>
+</body>
+</html>

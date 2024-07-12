@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tela de início</title>
+</head>
+<body>
+
+    <div class="options-bar">
+        <a class="option" href="perfilEMPRESA.html">Perfil</a>
+        <a class="option" href="termos.html">Termos e Condições</a>
+        <a class="option" href="DASHBOARD.html">Sair</a>
+    </div>
+
+    <div class="dashboard">
+        <div class="top-bar">
+            <h1 class="logo">Dev.Vagas</h1>
+        </div>
+        <div class="button-container">
+            <button class="libras-button"></button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="text-section">
+            <h2 class="dashboard-title">Crie vagas de emprego para achar desenvolvedores</h2>
+            <div class="button-container vagas-button-container">
+                <button class="vagas-button" onclick="window.location.href = 'CRIARvagas.html';">Criar Vagas</button>
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="IMAGEM.DASHBOARD.png" alt="Imagem do Dashboard">
+        </div>    
+    </div>
+
+    <style>
+        /* Estilos CSS */
+        /* Estilos da barra superior do dashboard */
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .top-bar {
+            background-color: #31aac7;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            height: 30%;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+        }
+
+        .logo {
+            font-size: 5em;
+            margin-left: -75%;
+            line-height: 1.75;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-decoration: underline;
+            text-decoration-color: black;
+            text-decoration-skip-ink: none;
+            text-decoration-thickness: 7px;
+            padding-bottom: 4em;
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+        }
+
+        .text-section {
+            flex: 1;
+            padding: 10px;
+            margin-top: -575px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dashboard-title {
+            font-size: 3em;
+            margin-left: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-width: 75%;
+        }
+
+        .dashboard-subtitle {
+            font-size: 1.50em;
+            margin-left: 50px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-width: 75%;
+        }
+
+        .image-section {
+            margin-top: -575px;
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            max-width: 40%;
+            height: auto;
+            margin-right: 25px;
+        }
+
+        .button-container {
+            margin-right: 15px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* Estilo para o botão Libras */
+        .libras-button {
+            background-image: url('libras.png');
+            background-color: #fff;
+            background-size: cover;
+            width: 75px;
+            height: 75px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .libras-button:hover {
+            transform: scale(1.15);
+        }
+
+        /* Estilo para o contêiner do botão Vagas */
+        .vagas-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 75px;
+        }
+
+        /* Estilo para o botão Vagas */
+        .vagas-button {
+            margin-top: 30px;
+            margin-right: 150px;
+            background-color: #1e3a5e;
+            color: #fff;
+            width: 160px;
+            height: 65px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-size: 1.5em;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .vagas-button:hover {
+            transform: scale(1.15);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); 
+        }
+
+        .chat-button-container{
+            display: flex;
+        }
+
+        .chat-button{
+            background-image: url('balao.png');
+            background-color: #fff;
+            width: 80px;
+            height: 60px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background-size: cover;
+            justify-content: flex-end;
+        }
+
+        .chat-button:hover{
+            transform: scale(1.15);
+        }
+
+        .chat {
+            position: fixed;
+            bottom: 100px;
+            right: 165px;
+            width: 450px;
+            height: 300px;
+            background-color: black; 
+            display: none;
+            border-radius: 20px; /* Ajuste nas bordas */
+            z-index: 999;
+            color: #fff;
+        }
+
+        .chat .top-bar {
+            height: 45px;
+            background-color: #1e3a5e; /* Cor da barra superior */
+            border-top-left-radius: 20px; /* Ajuste nas bordas */
+            border-top-right-radius: 20px; /* Ajuste nas bordas */
+            color: #fff;
+            font-size: 2.2em;
+        }
+
+        .chat-menu {
+            color: #fff;
+            font-size: 1.5em;
+            padding: 10px;
+        }
+
+        .show-chat{
+            display: block;
+        }
+
+        /* Estilo da barra de opções */
+        .options-bar {
+            background-color: #1e3a5e; /* Mesma cor do botão "Vagas" */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        /* Estilo dos botões de opção */
+        .option {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 2.5em;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        /* Efeito ao passar o mouse sobre os botões de opção */
+        .option:hover {
+            transform: scale(1.3);
+        }
+    </style>
+
+    <script>
+        function toggleChatMenu() {
+            var chatMenu = document.querySelector('.chat-menu');
+            chatMenu.classList.toggle('show-chat');
+        }
+
+        function toggleChat() {
+            var chat = document.querySelector('.chat');
+            chat.classList.toggle('show-chat');
+            toggleChatMenu();
+        }
+    </script>
+</body>
+</html>

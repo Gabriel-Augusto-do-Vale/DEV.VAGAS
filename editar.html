@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tela de início</title>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="top-bar">
+            <h1 class="logo">Dev.Vagas</h1>
+        </div>
+        <div class="title-section">
+            <h2 class="title">Crie seu currículo</h2>
+            <div class="title-line"></div>
+        </div>
+        <form id="signup-form">
+            <!-- Informações pessoais -->
+            <fieldset>
+                <legend>Informações pessoais</legend>
+                <p class="instruction">Preencha com suas informações de contato e perfis profissionais.</p>
+
+                <label for="nome_usuario">Nome:</label>
+                <input type="text" id="nome_usuario" name="nome">
+
+                <label for="email_usuario">Email:</label>
+                <input type="text" id="email_usuario" name="email">
+
+                <label for="telefone_usuario">Telefone:</label>
+                <input type="text" id="telefone_usuario" name="telefone">
+
+                <label for="linkedin_usuario">LinkedIn:</label>
+                <input type="text" id="linkedin_usuario" name="linkedin">
+
+                <label for="github_usuario">GitHub:</label>
+                <input type="text" id="github_usuario" name="github">
+
+                <label for="portfolio_usuario">Portfólio:</label>
+                <input type="text" id="portfolio_usuario" name="portfolio">
+            </fieldset>
+
+            <!-- Objetivo -->
+            <fieldset>
+                <legend>Objetivo</legend>
+                <p class="instruction">Descreva seu objetivo profissional de maneira clara e objetiva.</p>
+                <label for="objetivo">Objetivo profissional:</label>
+                <textarea id="objetivo" name="objetivo" rows="5" cols="50"></textarea>
+            </fieldset>
+
+            <!-- Formação -->
+            <fieldset>
+                <legend>Formação</legend>
+                <p class="instruction">Selecione seu nível de educação e preencha os detalhes da sua formação.</p>
+                <label for="nivel_educacao">Nível de Educação:</label>
+                <select id="nivel_educacao" name="nivel_educacao" onchange="mostrarFormacao()">
+                    <option value="">Selecione</option>
+                    <option value="ensino_medio_i">Ensino Médio Incompleto</option>
+                    <option value="ensino_medio">Ensino Médio Completo</option>
+                    <option value="tecnico_c">Cursando Técnico</option>
+                    <option value="tecnico">Técnico</option>
+                    <option value="graduacao_c">Cursando Graduação</option>
+                    <option value="graduacao">Graduado</option>
+                    <option value="pos_graduacao_c">Cursando Pós-Graduação</option>
+                    <option value="pos_graduacao">Pós-Graduado</option>
+                </select>
+
+                <div id="formacao_details" style="display: none;">
+                    <label for="curso_usuario1">Curso:</label>
+                    <input type="text" id="curso_usuario1" name="curso1">
+
+                    <label for="instituicao_usuario1">Instituição de Ensino:</label>
+                    <input type="text" id="instituicao_usuario1" name="instituicao1">
+
+                    <label for="previsao_conclusao1">Previsão de conclusão:</label>
+                    <input type="text" id="previsao_conclusao1" name="previsao_conclusao1">
+                </div>
+            </fieldset>
+
+            <!-- Formação adicional -->
+            <fieldset>
+                <legend>Formação adicional</legend>
+                <p class="instruction">Adicione outra formação, caso possua. Se não, selecione "Não tenho outra formação".</p>
+                <label for="nivel_educacao2">Adicione outra formação:</label>
+                <select id="nivel_educacao2" name="nivel_educacao2" onchange="mostrarFormacaoAdicional()">
+                    <option value="nao">Não tenho outra formação</option>
+                    <option value="tecnico_c2">Cursando Técnico</option>
+                    <option value="tecnico2">Técnico</option>
+                    <option value="graduacao_c2">Cursando Graduação</option>
+                    <option value="graduacao2">Graduado</option>
+                    <option value="pos_graduacao_c2">Cursando Pós-Graduação</option>
+                    <option value="pos_graduacao2">Pós-Graduado</option>
+                </select>
+
+                <div id="formacao_adicional_details" style="display: none;">
+                    <label for="curso_usuario2">Curso:</label>
+                    <input type="text" id="curso_usuario2" name="curso2">
+
+                    <label for="data_conclusao2">Data de conclusão:</label>
+                    <input type="text" id="data_conclusao2" name="data_conclusao2">
+
+                    <label for="instituicao_usuario2">Instituição de Ensino:</label>
+                    <input type="text" id="instituicao_usuario2" name="instituicao2">
+                </div>
+            </fieldset>
+
+            <!-- Experiências -->
+            <fieldset>
+                <legend>Experiências</legend>
+                <p class="instruction">Descreva suas experiências profissionais mais relevantes, até o máximo de 3.</p>
+                <label for="qtde_experiencia">Quantas experiências profissionais você já teve?</label>
+                <select id="qtde_experiencia" name="qtde_experiencia" onchange="mostrarExperiencias()">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+
+                <div id="experiencias"></div>
+            </fieldset>
+
+            <!-- Outras informações -->
+            <fieldset>
+                <legend>Outras informações</legend>
+                <p class="instruction">Adicione outras informações relevantes, como cursos extras, títulos, certificados, etc.</p>
+                <textarea id="outras_informacoes" name="outras_informacoes" rows="4" cols="50"></textarea>
+            </fieldset>
+        </form>
+        <button class="finalizar-button" onclick="visualizarCV()">Visualizar CV</button>
+        <button class="finalizar-button" onclick="gerarVoltar()">Gerar CV e voltar para o ínicio</button>
+    </div>
+
+    <script>
+        function mostrarFormacao() {
+            var nivelEducacao = document.getElementById('nivel_educacao').value;
+            var formacaoDetails = document.getElementById('formacao_details');
+            formacaoDetails.style.display = nivelEducacao ? 'block' : 'none';
+        }
+
+        function mostrarFormacaoAdicional() {
+            var nivelEducacao2 = document.getElementById('nivel_educacao2').value;
+            var formacaoAdicionalDetails = document.getElementById('formacao_adicional_details');
+            formacaoAdicionalDetails.style.display = nivelEducacao2 !== 'nao' ? 'block' : 'none';
+        }
+
+        function mostrarExperiencias() {
+            var qtdeExperiencia = document.getElementById('qtde_experiencia').value;
+            var experienciasDiv = document.getElementById('experiencias');
+            experienciasDiv.innerHTML = ''; // Limpa as experiências anteriores
+
+            for (var i = 1; i <= qtdeExperiencia; i++) {
+                experienciasDiv.innerHTML += `<h3>Experiência ${i}</h3>
+                    <label for="local_trabalho_${i}">Local que trabalhou:</label>
+                    <input type="text" id="local_trabalho_${i}" name="local_trabalho_${i}">
+
+                    <label for="funcao_${i}">Função exercida:</label>
+                    <input type="text" id="funcao_${i}" name="funcao_${i}">
+
+                    <label for="periodo_${i}">Período que trabalhou:</label>
+                    <input type="text" id="periodo_${i}" name="periodo_${i}">`;
+            }
+        }
+
+        function visualizarCV() {
+            window.location.href = "cv.png";
+        }
+
+        function gerarVoltar(){
+            window.location.href = "perfil2.html";
+        }
+    </script>
+</body>
+</html>
+
+<style>
+    .dashboard {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Altura mínima para preencher a tela */
+    }
+
+    .top-bar {
+        background-color: #31aac7;
+        padding: 10px;
+        text-align: center;
+        color: #fff;
+        border-bottom-left-radius: 35px;
+        border-bottom-right-radius: 35px;
+    }
+
+    .logo {
+        font-size: 3em;
+        line-height: 1.75;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        text-decoration: underline;
+        text-decoration-color: black;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: 7px;
+    }
+
+    .title-section {
+        text-align: center;
+        margin-top: 2em;
+    }
+
+    .title {
+        font-size: 2em;
+        font-weight: lighter;
+    }
+
+    .title-line {
+        width: 50%;
+        height: 5px;
+        background-color: black;
+        margin: 0 auto 10px;
+    }
+
+    .subtitle {
+        font-size: 1.5em;
+        color: black;
+    }
+
+    form {
+        width: 30%;
+        margin: auto;
+        text-align: left;
+        margin-bottom: 50px;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], input[type="number"], select, textarea {
+        width: calc(100% - 20px);
+        padding: 20px;
+        margin-bottom: 10px;
+        border: 6px solid #000000;
+        border-radius: 12px;
+        box-sizing: border-box;
+        font-size: 1.2em;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .finalizar-button {
+        margin: auto;
+        background-color: #1e3a5e;
+        color: #fff;
+        width: 200px;
+        height: 80px; /* Altura automática baseada no conteúdo */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        font-size: 1.5em;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 50px; /* Adicionando margem inferior */
+    }
+
+    .finalizar-button:hover {
+        transform: scale(1.15);
+    }
+
+    fieldset {
+        border: 4px solid #000; /* Borda mais grossa */
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    legend {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .instruction {
+        color: red;
+        font-weight: bold;
+    }
+</style>
